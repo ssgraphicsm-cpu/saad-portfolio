@@ -3,35 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CineStyle UK | Iconic Actor Outfits</title>
+
     <meta name="description" content="CineStyle UK - Discover cinematic-inspired outfits from iconic actors and shop your favourite looks through Amazon UK.">
-    <!-- Font Awesome Icons for Professional Look -->
-    <link rel="stylesheet" href="https://cloudflare.com">
+
     <style>
+        /* ================================
+           GLOBAL RESET
+        ================================= */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
-        :root {
-            --bg-dark: #0b0f19;
-            --card-bg: rgba(255, 255, 255, 0.04);
-            --primary-neon: #00f0ff;
-            --secondary-neon: #ff007f;
-            --text-muted: #aab3c5;
-        }
-
         body {
-            background-color: var(--bg-dark);
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0f19;
             color: #ffffff;
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Smooth Moving Radial Background */
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg: #0b0f19;
+            --card: rgba(255, 255, 255, 0.055);
+            --border: rgba(255, 255, 255, 0.12);
+            --primary: #00f0ff;
+            --secondary: #ff007f;
+            --white: #ffffff;
+            --muted: #aab3c5;
+            --container: 1180px;
+        }
+
+        /* ================================
+           ANIMATED BACKGROUND
+        ================================= */
         body::before {
             content: "";
             position: fixed;
@@ -39,10 +66,16 @@
             height: 650px;
             top: -220px;
             left: -180px;
-            background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
-            filter: blur(50px);
-            z-index: -2;
+            background: radial-gradient(
+                circle,
+                rgba(0, 240, 255, 0.16) 0%,
+                rgba(0, 240, 255, 0.04) 38%,
+                transparent 70%
+            );
+            filter: blur(20px);
+            animation: backgroundMove 12s ease-in-out infinite alternate;
             pointer-events: none;
+            z-index: -2;
         }
 
         body::after {
@@ -52,267 +85,1961 @@
             height: 600px;
             right: -200px;
             bottom: -200px;
-            background: radial-gradient(circle, rgba(255, 0, 127, 0.12) 0%, transparent 70%);
-            filter: blur(50px);
-            z-index: -2;
+            background: radial-gradient(
+                circle,
+                rgba(255, 0, 127, 0.13) 0%,
+                rgba(255, 0, 127, 0.04) 38%,
+                transparent 70%
+            );
+            filter: blur(20px);
+            animation: backgroundMoveTwo 14s ease-in-out infinite alternate;
             pointer-events: none;
+            z-index: -2;
+        }
+
+        @keyframes backgroundMove {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(280px, 160px);
+            }
+        }
+
+        @keyframes backgroundMoveTwo {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(-220px, -160px);
+            }
         }
 
         .container {
-            width: min(1180px, calc(100% - 40px));
+            width: min(var(--container), calc(100% - 40px));
             margin: 0 auto;
         }
 
-        /* HEADER */
+        /* ================================
+           HEADER
+        ================================= */
         .header {
             position: sticky;
             top: 0;
             z-index: 1000;
             padding: 16px 0;
-            background: rgba(11, 15, 25, 0.75);
+            background: rgba(11, 15, 25, 0.72);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .nav {
+            min-height: 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 30px;
         }
 
         .logo {
-            font-size: 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
             font-weight: 800;
-            color: var(--primary-neon);
-            text-decoration: none;
+            letter-spacing: -0.5px;
+            transition: 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            color: #061018;
+            font-size: 18px;
+            font-weight: 900;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                #ffffff,
+                var(--secondary)
+            );
+            box-shadow:
+                0 0 15px rgba(0, 240, 255, 0.45),
+                0 0 25px rgba(255, 0, 127, 0.25);
+        }
+
+        .logo span {
+            color: var(--primary);
         }
 
         .nav-links {
             display: flex;
+            align-items: center;
+            gap: 28px;
             list-style: none;
-            gap: 25px;
         }
 
         .nav-links a {
+            position: relative;
             color: #dce2ee;
-            text-decoration: none;
             font-size: 14px;
             font-weight: 600;
-            transition: 0.3s;
+            transition: 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+            width: 0;
+            height: 2px;
+            border-radius: 10px;
+            background: linear-gradient(
+                90deg,
+                var(--primary),
+                var(--secondary)
+            );
+            transition: 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--primary-neon);
+            color: var(--primary);
         }
 
-        /* HERO SECTION */
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 11px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            background: rgba(0, 240, 255, 0.08);
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.05);
+            background: var(--primary);
+            color: #071018;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.45);
+        }
+
+        /* ================================
+           HERO
+        ================================= */
         .hero {
-            padding: 80px 0;
-            min-height: 75vh;
+            min-height: calc(100vh - 92px);
+            padding: 90px 0 100px;
             display: flex;
             align-items: center;
+            position: relative;
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 50px;
+            grid-template-columns: 1.08fr 0.92fr;
             align-items: center;
-            width: 100%;
+            gap: 70px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 13px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(0, 240, 255, 0.22);
+            border-radius: 30px;
+            background: rgba(0, 240, 255, 0.06);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 12px var(--primary);
+            animation: pulse 1.6s infinite;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.35;
+                transform: scale(0.65);
+            }
         }
 
         .hero h1 {
-            font-size: clamp(36px, 5vw, 68px);
-            line-height: 1.1;
-            margin-bottom: 20px;
-            font-weight: 800;
+            max-width: 760px;
+            font-size: clamp(46px, 6vw, 82px);
+            line-height: 0.98;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
         }
 
         .gradient-text {
-            background: linear-gradient(90deg, var(--primary-neon), #ffffff, var(--secondary-neon));
+            background: linear-gradient(
+                90deg,
+                var(--primary),
+                #ffffff 45%,
+                var(--secondary)
+            );
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
         }
 
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            max-width: 600px;
+        .hero-description {
+            max-width: 590px;
+            color: var(--muted);
+            font-size: 17px;
+            margin-bottom: 34px;
         }
 
-        .hero-image-box img {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            animation: floatAction 5s ease-in-out infinite;
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        @keyframes floatAction {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
+        .btn {
+            min-height: 52px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 23px;
+            border-radius: 14px;
+            border: 1px solid transparent;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
         }
 
-        .btn-prime {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--primary-neon), var(--secondary-neon));
-            color: #fff;
-            padding: 14px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            box-shadow: 0 8px 20px rgba(255, 0, 127, 0.25);
-            transition: 0.3s;
+        .btn-primary {
+            background: linear-gradient(
+                110deg,
+                var(--primary),
+                #6fffff
+            );
+            color: #071018;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
         }
 
-        .btn-prime:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 25px rgba(0, 240, 255, 0.4);
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.045);
+            border-color: rgba(255, 255, 255, 0.14);
+            color: white;
         }
 
-        /* OUTFITS GRID */
-        .shop-section { padding: 80px 0; }
-        .sec-title { text-align: center; margin-bottom: 50px; }
-        .sec-title h2 { font-size: 2.2rem; margin-bottom: 10px; }
-        .sec-title p { color: var(--text-muted); }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .btn:hover {
+            transform: translateY(-4px) scale(1.04);
         }
 
-        .item-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            transition: 0.4s;
+        .btn-primary:hover {
+            box-shadow:
+                0 0 18px rgba(0, 240, 255, 0.65),
+                0 10px 40px rgba(0, 240, 255, 0.18);
+            animation: buttonBounce 0.7s ease;
         }
 
-        .item-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-neon);
-            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.15);
+        .btn-secondary:hover {
+            border-color: rgba(255, 0, 127, 0.5);
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.2);
         }
 
-        .img-wrapper img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 20px;
+        @keyframes buttonBounce {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+
+            40% {
+                transform: translateY(-7px) scale(1.06);
+            }
+
+            70% {
+                transform: translateY(-2px) scale(1.03);
+            }
+
+            100% {
+                transform: translateY(-4px) scale(1.04);
+            }
         }
 
-        .item-card h3 { margin-bottom: 8px; font-size: 1.3rem; }
-        .item-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
-
-        .btn-amazon {
-            display: block;
-            background: #ff9900;
-            color: #111;
-            padding: 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.3s;
+        /* ================================
+           HERO ACTOR VISUAL
+        ================================= */
+        .hero-visual {
+            min-height: 560px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .btn-amazon:hover { background: #ffb347; }
+        .visual-glow {
+            position: absolute;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(0, 240, 255, 0.25),
+                rgba(255, 0, 127, 0.12),
+                transparent 70%
+            );
+            filter: blur(25px);
+        }
 
-        /* SPOTLIGHT */
-        .trending-section { padding: 60px 0; }
-        .featured-banner-box {
-            background: linear-gradient(135deg, rgba(255,0,127,0.08), rgba(0,240,255,0.08));
-            border: 1px solid rgba(255,255,255,0.1);
+        .actor-card {
+            position: absolute;
+            width: 230px;
+            height: 330px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 24px;
-            padding: 40px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.5),
+                0 0 35px rgba(0, 240, 255, 0.08);
+            backdrop-filter: blur(15px);
         }
-        .feat-text { flex: 1; min-width: 300px; }
-        .feat-text h3 { font-size: 1.8rem; margin-bottom: 15px; }
 
-        /* ASSURANCE FEATURES */
-        .why-us { padding: 60px 0; }
-        .features-row { display: flex; flex-wrap: wrap; gap: 20px; }
-        .feature-box {
-            flex: 1;
-            min-width: 250px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.04);
-            border-radius: 12px;
-            padding: 25px;
+        .actor-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .actor-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(5, 8, 15, 0.85),
+                transparent 55%
+            );
+        }
+
+        .actor-info {
+            position: absolute;
+            z-index: 2;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .actor-info small {
+            display: block;
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .actor-info strong {
+            display: block;
+            margin-top: 4px;
+            font-size: 18px;
+        }
+
+        .actor-card.card-one {
+            transform: translateX(-110px) rotate(-9deg);
+            animation: floatingOne 5s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .actor-card.card-two {
+            transform: translateY(-12px);
+            animation: floatingTwo 5s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        .actor-card.card-three {
+            transform: translateX(110px) rotate(9deg);
+            animation: floatingThree 5s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes floatingOne {
+            0%,
+            100% {
+                margin-top: 0;
+            }
+
+            50% {
+                margin-top: -18px;
+            }
+        }
+
+        @keyframes floatingTwo {
+            0%,
+            100% {
+                margin-top: -12px;
+            }
+
+            50% {
+                margin-top: 12px;
+            }
+        }
+
+        @keyframes floatingThree {
+            0%,
+            100% {
+                margin-top: 0;
+            }
+
+            50% {
+                margin-top: -22px;
+            }
+        }
+
+        .floating-tag {
+            position: absolute;
+            z-index: 5;
+            padding: 11px 14px;
+            border-radius: 13px;
+            border: 1px solid rgba(0, 240, 255, 0.22);
+            background: rgba(11, 15, 25, 0.75);
+            backdrop-filter: blur(15px);
+            color: #eafaff;
+            font-size: 11px;
+            font-weight: 700;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .tag-top {
+            top: 45px;
+            right: 5px;
+            animation: tagFloat 4s ease-in-out infinite;
+        }
+
+        .tag-bottom {
+            bottom: 60px;
+            left: 10px;
+            animation: tagFloat 4.5s ease-in-out infinite reverse;
+        }
+
+        @keyframes tagFloat {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* ================================
+           SECTION HEADING
+        ================================= */
+        .section {
+            padding: 105px 0;
+        }
+
+        .section-heading {
+            max-width: 720px;
+            margin-bottom: 45px;
+        }
+
+        .section-heading.center {
+            margin-left: auto;
+            margin-right: auto;
             text-align: center;
         }
-        .feature-box i { font-size: 2.2rem; color: var(--primary-neon); margin-bottom: 15px; }
 
-        /* FOOTER */
-        footer {
-            background: #060911;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 60px;
+        .section-kicker {
+            margin-bottom: 12px;
+            color: var(--secondary);
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        .footer-container {
+
+        .section-heading h2 {
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 17px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        /* ================================
+           OUTFITS GRID
+        ================================= */
+        .outfits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 23px;
+            background: linear-gradient(
+                145deg,
+                rgba(255, 255, 255, 0.08),
+                rgba(255, 255, 255, 0.025)
+            );
+            backdrop-filter: blur(15px);
+            transition:
+                transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.45s ease,
+                border-color 0.45s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.025);
+            border-color: rgba(0, 240, 255, 0.32);
+            box-shadow:
+                0 28px 65px rgba(0, 0, 0, 0.5),
+                0 0 35px rgba(0, 240, 255, 0.13);
+        }
+
+        .product-image {
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-label {
+            position: absolute;
+            top: 17px;
+            left: 17px;
+            padding: 7px 10px;
+            border-radius: 20px;
+            background: rgba(5, 8, 15, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            backdrop-filter: blur(10px);
+            color: var(--primary);
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .product-content {
+            padding: 23px;
+        }
+
+        .product-content h3 {
+            margin-bottom: 7px;
+            font-size: 21px;
+        }
+
+        .product-content p {
+            min-height: 52px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .product-bottom {
+            margin-top: 20px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            max-width: 1180px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-            gap: 20px;
+            justify-content: space-between;
+            gap: 15px;
         }
 
-        @media (max-width: 768px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-image-box { order: -1; }
-            .nav-links { display: none; }
+        .rating {
+            color: #ffd66b;
+            font-size: 13px;
+            white-space: nowrap;
         }
+
+        .shop-btn {
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            transition: 0.3s ease;
+        }
+
+        .shop-btn:hover {
+            background: var(--primary);
+            color: #061018;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+
+        /* ================================
+           TRENDING SPOTLIGHT
+        ================================= */
+        .spotlight {
+            padding: 35px 0;
+        }
+
+        .spotlight-box {
+            position: relative;
+            min-height: 390px;
+            overflow: hidden;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            padding: 55px;
+            background:
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(0, 240, 255, 0.35),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(255, 0, 127, 0.3),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    120deg,
+                    #11182b,
+                    #190d20,
+                    #091b24
+                );
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+        }
+
+        .spotlight-box::before {
+            content: "";
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            right: 10%;
+            top: -100px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            box-shadow:
+                0 0 40px rgba(0, 240, 255, 0.12),
+                inset 0 0 40px rgba(0, 240, 255, 0.08);
+            animation: rotateCircle 12s linear infinite;
+        }
+
+        @keyframes rotateCircle {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spotlight-content {
+            position: relative;
+            z-index: 2;
+            max-width: 670px;
+        }
+
+        .spotlight-content span {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .spotlight-content h2 {
+            margin: 13px 0 15px;
+            font-size: clamp(35px, 5vw, 62px);
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .spotlight-content p {
+            max-width: 570px;
+            margin-bottom: 25px;
+            color: #c1c9d7;
+        }
+
+        /* ================================
+           FEATURES
+        ================================= */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature {
+            position: relative;
+            padding: 30px;
+            min-height: 250px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.045);
+            backdrop-filter: blur(15px);
+            transition: 0.35s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 0, 127, 0.3);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+            margin-bottom: 25px;
+            display: grid;
+            place-items: center;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 240, 255, 0.22);
+            background: linear-gradient(
+                135deg,
+                rgba(0, 240, 255, 0.13),
+                rgba(255, 0, 127, 0.12)
+            );
+            color: var(--primary);
+            font-size: 25px;
+        }
+
+        .feature h3 {
+            margin-bottom: 9px;
+            font-size: 19px;
+        }
+
+        .feature p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .metric {
+            position: absolute;
+            top: 29px;
+            right: 28px;
+            color: var(--secondary);
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        /* ================================
+           FOOTER CTA
+        ================================= */
+        .footer {
+            padding: 30px 0 0;
+        }
+
+        .footer-cta {
+            position: relative;
+            overflow: hidden;
+            padding: 60px;
+            border-radius: 30px 30px 0 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 0;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0, 240, 255, 0.08),
+                    rgba(255, 0, 127, 0.08)
+                ),
+                rgba(255, 255, 255, 0.035);
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            font-size: clamp(32px, 5vw, 58px);
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .footer-cta p {
+            max-width: 620px;
+            margin: 0 auto 27px;
+            color: var(--muted);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 22px;
+            margin-top: 32px;
+        }
+
+        .footer-links a {
+            color: #b8c1d2;
+            font-size: 13px;
+            transition: 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding: 25px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            color: #7f899c;
+            font-size: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .creator {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .affiliate-note {
+            max-width: 560px;
+            text-align: right;
+        }
+
+        /* ================================
+           SCROLL REVEAL
+        ================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ================================
+           RESPONSIVE TABLET
+        ================================= */
+        @media (max-width: 950px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .hero {
+                padding-top: 65px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                min-height: 500px;
+            }
+
+            .outfits-grid,
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-card:last-child {
+                grid-column: 1 / -1;
+                max-width: 480px;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .spotlight-box {
+                padding: 45px;
+            }
+        }
+
+        /* ================================
+           RESPONSIVE MOBILE
+        ================================= */
+        @media (max-width: 680px) {
+            .container {
+                width: min(100% - 28px, var(--container));
+            }
+
+            .header {
+                padding: 11px 0;
+            }
+
+            .nav {
+                min-height: 55px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                padding: 9px 13px;
+            }
+
+            .logo {
+                font-size: 17px;
+            }
+
+            .logo-icon {
+                width: 34px;
+                height: 34px;
+                border-radius: 10px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 65px 0 55px;
+            }
+
+            .hero h1 {
+                font-size: clamp(43px, 13vw, 65px);
+                letter-spacing: -2.8px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .hero-visual {
+                min-height: 410px;
+                transform: scale(0.83);
+                margin-top: -25px;
+                margin-bottom: -30px;
+            }
+
+            .actor-card {
+                width: 190px;
+                height: 285px;
+            }
+
+            .actor-card.card-one {
+                transform: translateX(-83px) rotate(-7deg);
+            }
+
+            .actor-card.card-three {
+                transform: translateX(83px) rotate(7deg);
+            }
+
+            .floating-tag {
+                font-size: 9px;
+            }
+
+            .tag-top {
+                right: -5px;
+            }
+
+            .tag-bottom {
+                left: -5px;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .section-heading h2 {
+                letter-spacing: -1.5px;
+            }
+
+            .outfits-grid,
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card:last-child {
+                grid-column: auto;
+                max-width: none;
+            }
+
+            .product-image {
+                height: 330px;
+            }
+
+            .spotlight {
+                padding: 20px 0;
+            }
+
+            .spotlight-box {
+                min-height: 440px;
+                padding: 32px 25px;
+                border-radius: 24px;
+            }
+
+            .spotlight-content h2 {
+                font-size: 41px;
+            }
+
+            .footer-cta {
+                padding: 45px 22px;
+                border-radius: 24px 24px 0 0;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .affiliate-note {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .hero-visual {
+                transform: scale(0.72);
+                margin-top: -45px;
+                margin-bottom: -65px;
+            }
+
+            .product-content {
+                padding: 20px;
+            }
+
+            .product-bottom {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .shop-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* =========================================
+   EXTRA MOBILE + TABLET RESPONSIVENESS
+   DESIGN OTHERWISE UNCHANGED
+========================================= */
+
+/* TABLET */
+@media (min-width: 681px) and (max-width: 1024px) {
+
+    .container {
+        width: min(92%, 950px);
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 70px 0 80px;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        min-height: 470px;
+        width: 100%;
+    }
+
+    .outfits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-card:last-child {
+        grid-column: 1 / -1;
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature:last-child {
+        grid-column: 1 / -1;
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .spotlight-box {
+        padding: 50px;
+    }
+}
+
+
+/* MOBILE */
+@media (max-width: 680px) {
+
+    .container {
+        width: calc(100% - 30px);
+    }
+
+    .nav {
+        gap: 10px;
+    }
+
+    .logo {
+        flex-shrink: 0;
+    }
+
+    .nav-cta {
+        white-space: nowrap;
+        font-size: 11px;
+    }
+
+    .hero {
+        padding: 55px 0 50px;
+    }
+
+    .hero h1 {
+        max-width: 100%;
+    }
+
+    .hero-description {
+        max-width: 100%;
+        line-height: 1.7;
+    }
+
+    .hero-buttons {
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-visual {
+        width: 100%;
+        min-height: 390px;
+        transform: scale(0.78);
+        margin-top: -20px;
+        margin-bottom: -45px;
+    }
+
+    .actor-card {
+        width: 185px;
+        height: 275px;
+    }
+
+    .actor-card.card-one {
+        transform: translateX(-75px) rotate(-7deg);
+    }
+
+    .actor-card.card-three {
+        transform: translateX(75px) rotate(7deg);
+    }
+
+    .floating-tag {
+        white-space: nowrap;
+    }
+
+    .tag-top {
+        right: 0;
+    }
+
+    .tag-bottom {
+        left: 0;
+    }
+
+    .section {
+        padding: 65px 0;
+    }
+
+    .section-heading {
+        margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+        font-size: 38px;
+    }
+
+    .outfits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card:last-child {
+        grid-column: auto;
+        width: 100%;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .feature:last-child {
+        grid-column: auto;
+        width: 100%;
+    }
+
+    .spotlight-box {
+        padding: 35px 25px;
+        min-height: 410px;
+    }
+
+    .spotlight-content h2 {
+        font-size: 40px;
+    }
+
+    .footer-cta {
+        padding: 45px 22px;
+    }
+
+    .footer-bottom {
+        gap: 15px;
+    }
+}
+
+
+/* SMALL PHONES */
+@media (max-width: 430px) {
+
+    .container {
+        width: calc(100% - 24px);
+    }
+
+    .logo {
+        font-size: 15px;
+    }
+
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 15px;
+    }
+
+    .nav-cta {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .hero-visual {
+        transform: scale(0.68);
+        margin-top: -45px;
+        margin-bottom: -70px;
+    }
+
+    .spotlight-content h2 {
+        font-size: 36px;
+    }
+
+    .footer-links {
+        gap: 15px;
+    }
+}
     </style>
 </head>
+
 <body>
 
+    <!-- ================================
+         STICKY HEADER
+    ================================= -->
     <header class="header">
-        <div class="container nav">
-            <a href="#" class="logo"><i class="fa-solid fa-clapperboard"></i> CineStyle UK</a>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#shop">Outfits</a></li>
-                <li><a href="#trending">Trending</a></li>
-                <li><a href="#why-us">Assurance</a></li>
-            </ul>
+        <div class="container">
+            <nav class="nav">
+
+                <a href="#home" class="logo">
+                    <span class="logo-icon">C</span>
+                    <span>CineStyle <span>UK</span></span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#outfits">Outfits</a></li>
+                    <li><a href="#trending">Trending</a></li>
+                    <li><a href="#assurance">Assurance</a></li>
+                </ul>
+
+                <a href="#outfits" class="nav-cta">
+                    Explore Looks
+                </a>
+
+            </nav>
         </div>
     </header>
 
-    <section id="hero" class="hero">
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <h1>Dress Like <span class="gradient-text">Cinema.</span></h1>
-                <p>Discover iconic actor-inspired jackets, caps and cinematic fashion picks curated for fans across the UK. Shop your favourite style seamlessly.</p>
-                <a href="#shop" class="btn-prime">Explore Outfits</a>
-            </div>
-            <div class="hero-image-box">
-                <img src="https://unsplash.com" alt="Cinematic Fashion">
-            </div>
-        </div>
-    </section>
 
-    <section id="shop" class="shop-section">
-        <div class="container">
-            <div class="sec-title">
-                <h2>Iconic Looks. Your Style.</h2>
-                <p>Selected cinematic outfit ideas for everyday UK fashion.</p>
+    <main>
+
+        <!-- ================================
+             HERO SECTION
+        ================================= -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-grid">
+
+                    <div class="hero-content reveal">
+
+                        <div class="eyebrow">
+                            <span class="eyebrow-dot"></span>
+                            Amazon UK Style Edit
+                        </div>
+
+                        <h1>
+                            Dress Like
+                            <span class="gradient-text">Cinema.</span>
+                        </h1>
+
+                        <p class="hero-description">
+                            Discover iconic actor-inspired jackets, caps and
+                            cinematic fashion picks curated for fans across
+                            the UK. Find the look, discover the outfit and
+                            shop your favourite style.
+                        </p>
+
+                        <div class="hero-buttons">
+                            <a href="https://link.amazon/B0aIMmXue" class="btn btn-primary" target="_blank">
+                                Explore Outfits
+                                <span>→</span>
+                            </a>
+
+                            <a href="https://link.amazon/B0duQd8xL" class="btn btn-secondary" target="_blank">
+                                See What's Trending
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-visual reveal">
+
+                        <div class="visual-glow"></div>
+
+                        <div class="floating-tag tag-top">
+                            ✦ UK Trending
+                        </div>
+
+                        <div class="floating-tag tag-bottom">
+                            ★ 4.5+ Customer Rated
+                        </div>
+
+
+                        <!-- Actor Card 1 -->
+                        <article class="actor-card card-one">
+                            <img
+                                src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=700&q=80"
+                                alt="Cinematic men's jacket style"
+                            >
+
+                            <div class="actor-info">
+                                <small>Inspired Look</small>
+                                <strong>Modern Jacket</strong>
+                            </div>
+                        </article>
+
+
+                        <!-- Actor Card 2 -->
+                        <article class="actor-card card-two">
+                            <img
+                                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80"
+                                alt="Fashion inspired cinematic outfit"
+                            >
+
+                            <div class="actor-info">
+                                <small>Cinema Style</small>
+                                <strong>Signature Look</strong>
+                            </div>
+                        </article>
+
+
+                        <!-- Actor Card 3 -->
+                        <article class="actor-card card-three">
+                            <img
+                                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80"
+                                alt="Classic actor inspired fashion"
+                            >
+
+                            <div class="actor-info">
+                                <small>Classic Edit</small>
+                                <strong>Iconic Style</strong>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
             </div>
-            <div class="grid-container">
-                <!-- Card 1 -->
-                <div class="item-card">
-                    <div class="img-wrapper"><img src="https://unsplash.com" alt="Tom Hardy Jacket"></div>
+        </section>
+
+
+        <!-- ================================
+             OUTFITS SHOWCASE
+        ================================= -->
+        <section class="section" id="outfits">
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <div class="section-kicker">Curated Collection</div>
+
+                    <h2>
+                        Iconic Looks.
+                        <span class="gradient-text">Your Style.</span>
+                    </h2>
+
+                    <p>
+                        Explore three cinematic-inspired outfit ideas
+                        selected for fans who want to bring screen style
+                        into everyday UK fashion.
+                    </p>
+                </div>
+
+
+                <div class="outfits-grid">
+
+                    <!-- Product Card 1 -->
+                    <article class="product-card reveal">
+
+                        <div class="product-image">
+
+                            <span class="product-label">
+                                Actor Inspired
+                            </span>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=900&q=85"
+                                alt="Tom Hardy inspired leather jacket"
+                            >
+
+                        </div>
+
+                        <div class="product-content">
+
+                            <h3>Tom Hardy Jacket</h3>
+
+                            <p>
+                                A rugged cinematic-inspired jacket style
+                                for a bold everyday look.
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <div class="rating">
+                                    ★★★★★
+                                </div>
+
+                                <a
+                                    href="https://link.amazon/B03bCk1b6"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="shop-btn"
+                                >
+                                    View on Amazon UK →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Product Card 2 -->
+                    <article class="product-card reveal">
+
+                        <div class="product-image">
+
+                            <span class="product-label">
+                                Classic Style
+                            </span>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=900&q=85"
+                                alt="Cillian Murphy inspired flat cap"
+                            >
+
+                        </div>
+
+                        <div class="product-content">
+
+                            <h3>Cillian Murphy Flat Cap</h3>
+
+                            <p>
+                                A timeless flat-cap inspired by classic
+                                British cinematic styling.
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <div class="rating">
+                                    ★★★★★
+                                </div>
+
+                                <a
+                                    href="https://link.amazon/B0j2AkTtN"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="shop-btn"
+                                >
+                                    View on Amazon UK →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Product Card 3 -->
+                    <article class="product-card reveal">
+
+                        <div class="product-image">
+
+                            <span class="product-label">
+                                Trending
+                            </span>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=900&q=85"
+                                alt="British actor inspired formal outfit"
+                            >
+
+                        </div>
+
+                        <div class="product-content">
+
+                            <h3>British Noir Suit</h3>
+
+                            <p>
+                                A sharp dark formal look inspired by modern
+                                British crime-film aesthetics.
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <div class="rating">
+                                    ★★★★★
+                                </div>
+
+                                <a
+                                    href="https://link.amazon/B0aIMmXue"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="shop-btn"
+                                >
+                                    View on Amazon UK →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================================
+             TRENDING SPOTLIGHT
+        ================================= -->
+        <section class="spotlight" id="trending">
+            <div class="container">
+
+                <div class="spotlight-box reveal">
+
+                    <div class="spotlight-content">
+
+                        <span>
+                            ✦ Weekly Style Spotlight
+                        </span>
+
+                        <h2>
+                            This Week's
+                            <span class="gradient-text">
+                                UK Choice
+                            </span>
+                        </h2>
+
+                        <p>
+                            The cinematic look everyone is talking about.
+                            Discover the latest actor-inspired fashion picks
+                            and find your next signature outfit.
+                        </p>
+
+                        <a
+                            href="https://pin.it/67cjMygVG"
+                            target="_blank"
+                            class="btn btn-primary"
+                        >
+                            Discover The Look
+                            <span>↗</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================================
+             ASSURANCE GUIDE
+        ================================= -->
+        <section class="section" id="assurance">
+            <div class="container">
+
+                <div class="section-heading center reveal">
+
+                    <div class="section-kicker">
+                        Quality Guide
+                    </div>
+
+                    <h2>
+                        Shop With
+                        <span class="gradient-text">
+                            Confidence.
+                        </span>
+                    </h2>
+
+                    <p>
+                        We make discovering cinematic fashion simple,
+                        transparent and easy to explore.
+                    </p>
+
+                </div>
+
+
+                <div class="features">
+
+                    <!-- Feature 1 -->
+                    <article class="feature reveal">
+
+                        <span class="metric">
+                            01
+                        </span>
+
+                        <div class="feature-icon">
+                            ✓
+                        </div>
+
+                        <h3>
+                            Exact Match
+                        </h3>
+
+                        <p>
+                            We focus on finding products that closely
+                            represent the colours, shapes and overall
+                            styling of the featured cinematic look.
+                        </p>
+
+                    </article>
+
+
+                    <!-- Feature 2 -->
+                    <article class="feature reveal">
+
+                        <span class="metric">
+                            02
+                        </span>
+
+                        <div class="feature-icon">
+                            UK
+                        </div>
+
+                        <h3>
+                            Official UK Shipping
+                        </h3>
+
+                        <p>
+                            Product links take you toward Amazon UK listings,
+                            making it easier for UK shoppers to check current
+                            delivery and availability.
+                        </p>
+
+                    </article>
+
+
+                    <!-- Feature 3 -->
+                    <article class="feature reveal">
+
+                        <span class="metric">
+                            4.5+
+                        </span>
+
+                        <div class="feature-icon">
+                            ★
+                        </div>
+
+                        <h3>
+                            4.5+ Rating Focus
+                        </h3>
+
+                        <p>
+                            We highlight highly rated choices where possible,
+                            helping you make a more informed decision before
+                            visiting the retailer.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ================================
+         INTERACTIVE FOOTER
+    ================================= -->
+    <footer class="footer" id="footer">
+
+        <div class="container">
+
+            <div class="footer-cta reveal">
+
+                <div class="section-kicker">
+                    Stay In The Loop
+                </div>
+
+                <h2>
+                    More Looks.
+                    <span class="gradient-text">
+                        More Cinema.
+                    </span>
+                </h2>
+
+                <p>
+                    Follow our Facebook video feed for actor-inspired
+                    outfit edits, cinematic fashion discoveries and new
+                    style inspiration.
+                </p>
+
+                <a
+                    href="https://www.facebook.com/profile.php?id=61592102910177"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary"
+                >
+                    Watch Facebook Feed
+                    <span>↗</span>
+                </a>
+
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#outfits">Outfits</a>
+                    <a href="#trending">Trending</a>
+                    <a href="#assurance">Assurance</a>
+                    <a href="#footer">Contact</a>
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <div>
+                    © 2026 CineStyle UK · Created by
+                    <span class="creator">Saad</span>
+                </div>
+
+                <div class="affiliate-note">
+                    As an Amazon Associate, CineStyle UK may earn from
+                    qualifying purchases. Prices and availability are
+                    subject to change on Amazon UK.
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const revealElements = document.querySelectorAll(".reveal");
+
+            const revealObserver = new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("active");
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+            revealElements.forEach(function (element) {
+                revealObserver.observe(element);
+            });
+
+
+            const anchorLinks = document.querySelectorAll(
+                'a[href^="#"]'
+            );
+
+            anchorLinks.forEach(function (link) {
+
+                link.addEventListener("click", function (event) {
+
+                    const targetId = this.getAttribute("href");
+
+                    if (
+                        targetId &&
+                        targetId !== "#"
+                    ) {
+
+                        const target =
+                            document.querySelector(targetId);
+
+                        if (target) {
+
+                            event.preventDefault();
+
+                            target.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        }
+
+                    }
+
+                });
+
+            });
+
+
+            const cards =
+                document.querySelectorAll(".product-card");
+
+            cards.forEach(function (card) {
+
+                card.addEventListener(
+                    "mousemove",
+                    function (event) {
+
+                        const rect =
+                            card.getBoundingClientRect();
+
+                        const x =
+                            event.clientX - rect.left;
+
+                        const y =
+                            event.clientY - rect.top;
+
+                        const rotateY =
+                            ((x / rect.width) - 0.5) * 5;
+
+                        const rotateX =
+                            ((y / rect.height) - 0.5) * -5;
+
+                        card.style.transform =
+                            "translateY(-15px) scale(1.025) rotateX(" +
+                            rotateX +
+                            "deg) rotateY(" +
+                            rotateY +
+                            "deg)";
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "mouseleave",
+                    function () {
+
+                        card.style.transform =
+                            "translateY(0) scale(1) rotateX(0) rotateY(0)";
+
+                    }
+                );
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>
